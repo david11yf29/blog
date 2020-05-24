@@ -8,7 +8,7 @@ export const fetchPosts = () => {
         // Action 內部先 dispatch action
         dispatch({
             type: 'FETCH_POSTS',
-            payload: response
+            payload: response.data
         })
     }
 }

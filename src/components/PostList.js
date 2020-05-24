@@ -9,6 +9,7 @@ class PostList extends React.Component {
     }
 
     render() {
+        console.log(this.props.posts);
         return (
             <div>
                 Post List
@@ -17,10 +18,18 @@ class PostList extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
+        // fetchPosts() 回傳一個 function 裡面會有 dispatch action 在裡面
+        // 然後這邊再 dispatch 這個 function 就會引起內部 dispatch 這個 action
         fetchPosts: () => dispatch(fetchPosts())
     }
 }
 
-export default connect(null, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps, mapDispatchToProps)(PostList);
