@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions';
+import UserHeader from './UserHeader';
 
 class PostList extends React.Component {
 
@@ -18,6 +19,7 @@ class PostList extends React.Component {
                             <h2>{post.title}</h2>
                             <p>{post.body}</p>
                         </div>
+                        <UserHeader userId={post.userId}/>
                     </div>
                 </div>
             )
@@ -42,7 +44,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // fetchPosts() 回傳一個 function 裡面會有 dispatch action 在裡面
+        // fetchPosts() 會回傳一個 function 裡面會有 dispatch action 在裡面
         // 然後這邊再 dispatch 這個 function 就會引起內部 dispatch 這個 action
         fetchPosts: () => dispatch(fetchPosts())
     }
